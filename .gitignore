@@ -1,0 +1,9 @@
+$ cat .gitignore
+
+# Compiled source #
+###################
+*.pyc
+
+# Idea settings #
+#################
+.idea/*

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<models>
+  <model name="users" title="Пользователи">
+    <field id="name" title="Имя" type="char" />
+    <field id="paycheck" title="Зарплата" type="int" />
+    <field id="date_joined" title="Дата поступления на работу" type="int" />
+  </model>
+  <model name="rooms" title="Комнаты">
+    <field id="department" title="Отдел" type="char" />
+    <field id="spots" title="Вместимость" type="int" />
+  </model>
+</models>
