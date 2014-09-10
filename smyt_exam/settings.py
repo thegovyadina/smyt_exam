@@ -21,7 +21,6 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django.contrib.admin',
     'dynamic_models',
 )
 
@@ -45,8 +44,12 @@ WSGI_APPLICATION = 'smyt_exam.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'smyt',
+        'USER': 'x47',
+        'PASSWORD': '474747',
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
     }
 }
 
