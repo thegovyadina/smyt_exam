@@ -11,7 +11,7 @@ for config_model in get_models_configs():
     for name in ('verbose_name', 'verbose_name_plural'):
         setattr(Meta, name, config_model['verbose_name'])
 
-    model = type(config_model['name'], (models.Model,), {'Meta': Meta, '__module__': __name__})
+    model = type(str(config_model['name']), (models.Model,), {'Meta': Meta, '__module__': __name__})
 
     for field_name, field in config_model['fields'].iteritems():
         model.add_to_class(field_name, field)
