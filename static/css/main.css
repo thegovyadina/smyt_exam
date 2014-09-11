@@ -1,0 +1,96 @@
+html,
+button,
+input,
+select,
+textarea {
+    color: #222;
+}
+
+body {
+    font-size: 14px;
+    line-height: 1.4;
+    font-family: Verdana, Tahoma, Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #efefef;
+    height:100%;
+    width:100%;
+    overflow: hidden;
+}
+
+::-moz-selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+::selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+img {
+    vertical-align: middle;
+}
+
+textarea {
+    resize: vertical;
+}
+
+.chromeframe {
+    margin: 0.2em 0;
+    background: #ccc;
+    color: #000;
+    padding: 0.2em 0;
+}
+
+a {
+    text-decoration: none;
+    border-bottom: 1px solid #3366ff;
+    color: #3366ff;
+}
+
+a.local{
+    border-bottom: 1px dashed #3366ff;
+}
+
+a:active {
+    color: #F26521;
+    border-color: #F26521;
+}
+
+td, th {
+    padding: 5px;
+}
+
+th {
+    background-color: #999;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #eee;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #e5e5e5;
+}
+
+.left_column {
+    float: left;
+    padding: 20px;
+}
+
+.left_column ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.left_column ul li {
+    margin-right: 10px;
+    height: 30px;
+    line-height: normal;
+}
+
+.left_column ul li.selected {
+    font-weight: bold;
+}

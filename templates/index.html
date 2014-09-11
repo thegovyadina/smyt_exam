@@ -5,24 +5,30 @@
     <div class="left_column">
         <ul class="models">
             {% for model in models %}
-                <li id="{{ model|first }}"><a href="#">{{ model|last }}</a></li>
+                <li id="{{ model|first }}" {% if forloop.first %}class="selected" {% endif %}><a href="#" class="local">{{ model|last }}</a></li>
             {% endfor %}
         </ul>
     </div>
     <div class="right_column">
         <table>
-            <tr>
-                {% for field in first_model_fields %}
-                    <th class="{{ field|last }}">{{ field|first }}</th>
-                {% endfor %}
-            </tr>
-            {% for item in first_model %}
+            <thead>
                 <tr>
-                    {% for field in item %}
-                        <td>{{ field }}</td>
+                    {% for field in first_model_fields %}
+                        <th class="{{ field|last }}">{{ field|first }}</th>
                     {% endfor %}
                 </tr>
-            {% endfor %}
+            </thead>
+            <tbody>
+                {% for item in first_model %}
+                    <tr>
+                        {% for field in item %}
+                            <td>
+                                <span>{{ field }}</span>
+                            </td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </tbody>
         </table>
     </div>
 {% include "body_bottom.html" %}
