@@ -9,7 +9,22 @@
             {% endfor %}
         </ul>
     </div>
-    <div class="right_column"></div>
+    <div class="right_column">
+        <table>
+            <tr>
+                {% for field in first_model_fields %}
+                    <th class="{{ field|last }}">{{ field|first }}</th>
+                {% endfor %}
+            </tr>
+            {% for item in first_model %}
+                <tr>
+                    {% for field in item %}
+                        <td>{{ field }}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
 {% include "body_bottom.html" %}
 </body>
 </html>
