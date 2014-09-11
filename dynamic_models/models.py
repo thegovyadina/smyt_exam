@@ -1,6 +1,6 @@
-from django.db import models, connection
+from django.db import models
 from django.contrib import admin
-from config import get_models_configs, create_model
+from config import get_models_configs
 
 
 models_list = []
