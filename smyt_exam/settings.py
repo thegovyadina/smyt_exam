@@ -22,6 +22,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'dynamic_models',
+    'south'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -66,8 +67,12 @@ USE_L10N = True
 
 USE_TZ = True
 
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.7/howto/static-files/
-
+# URL prefix for static files.
+# Example: "http://media.lawrence.com/static/"
 STATIC_URL = '/static/'
+
+TEMPLATE_DIRS = (os.path.join(BASE_DIR, 'templates'),)

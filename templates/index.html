@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+{% include "head.html" %}
+<body>
+    <div class="left_column">
+        <ul class="models">
+            {% for model in models %}
+                <li id="{{ model|first }}"><a href="#">{{ model|last }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="right_column"></div>
+{% include "body_bottom.html" %}
+</body>
+</html>
