@@ -1,3 +1,3 @@
 from django.contrib import admin
+from dynamic_models.models import *
 
-# Register your models here.

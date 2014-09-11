@@ -3,7 +3,7 @@
   <model name="users" title="Пользователи">
     <field id="name" title="Имя" type="char" />
     <field id="paycheck" title="Зарплата" type="int" />
-    <field id="date_joined" title="Дата поступления на работу" type="int" />
+    <field id="date_joined" title="Дата поступления на работу" type="date" />
   </model>
   <model name="rooms" title="Комнаты">
     <field id="department" title="Отдел" type="char" />
