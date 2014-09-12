@@ -118,3 +118,7 @@ ul li {
 #return {
     float: right;
 }
+
+.invalid {
+    border: 1px solid red;
+}
