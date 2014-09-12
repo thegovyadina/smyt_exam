@@ -2,13 +2,14 @@
 (function ($) {
     "use strict";
 
-    $("a").click(function () {
+    function load_model(model_id) {
 
-        $(".selected").removeClass("selected");
-        $(this).parent().addClass("selected");
+        if (model_id === undefined) {
+            model_id = $("#left_column").find("a").first().attr('id');
+        }
 
-        $.getJSON('/get_model/', {model: this.id}, function (response) {
-            var table, field, elem, item, record;
+        $.getJSON('/model/', {model: model_id}, function (response) {
+            var table, field, elem, item, record, ul;
 
             $("#model_table").remove();
 
@@ -17,7 +18,7 @@
 
             for (field in response.fields) {
                 if (response.fields.hasOwnProperty(field)) {
-                    elem = $('<th>').addClass(response.fields[field][1]).text(response.fields[field][0]);
+                    elem = $('<th>').addClass(response.fields[field][2]).text(response.fields[field][0]);
                     table.find('tr').append(elem);
                 }
             }
@@ -36,9 +37,29 @@
                     table.find('tbody').append(elem);
                 }
             }
-            $(".right_column").append(table);
+            $("#right_column").prepend(table);
+
+            ul = $("#new_record").empty();
+
+            for (field in response.fields) {
+                if (response.fields.hasOwnProperty(field)) {
+                    if (response.fields[field][1] !== 'id') {
+                        elem = $('<li><label for="input-' + response.fields[field][1] + '">' + response.fields[field][0] + ':</label><input id="input-' + response.fields[field][1] + '"></li>');
+                        ul.append(elem);
+                    }
+                }
+            }
+
             console.log(response);
         });
+    }
+
+    load_model();
+
+    $("a").click(function () {
+        $(".selected").removeClass("selected");
+        $(this).parent().addClass("selected");
+        load_model(this.id);
     });
 
 }(jQuery));

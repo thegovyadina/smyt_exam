@@ -5,7 +5,7 @@ from mixins import JsonResponseMixin
 
 def get_model_data(model):
     values = [m for m in model.objects.all().values_list()]
-    fields = [(f._verbose_name, f.get_internal_type().lower()) for f in model._meta.fields]
+    fields = [(f._verbose_name, f.name, f.get_internal_type().lower()) for f in model._meta.fields]
     return fields, values
 
 
@@ -22,10 +22,12 @@ class HomePageView(TemplateView):
 
         context['models'] = models
 
+        """
         first_model = get_model('dynamic_models', models[0][0])
         first_model_fields, first_model_values = get_model_data(first_model)
         context['first_model'] = first_model_values
         context['first_model_fields'] = first_model_fields
+        """
 
         return context
 

@@ -10,14 +10,15 @@
     <script>window.jQuery || document.write('<script src="{% static "js/vendor/jquery-2.1.1.min.js" %}"></'+'script>');</script>
 </head>
 <body>
-    <div class="left_column">
+    <div id="left_column">
         <ul class="models">
             {% for model in models %}
                 <li {% if forloop.first %}class="selected" {% endif %}><a href="#" id="{{ model|first }}" class="local">{{ model|last }}</a></li>
             {% endfor %}
         </ul>
     </div>
-    <div class="right_column">
+    <div id="right_column">
+        {% comment %}
         <table id="model_table">
             <thead>
                 <tr>
@@ -38,6 +39,13 @@
                 {% endfor %}
             </tbody>
         </table>
+        {% endcomment %}
+        <fieldset>
+            <legend>Новая запись</legend>
+            <ul id="new_record">
+            </ul>
+            <input type="button" id="return" value="Добавить">
+        </fieldset>
     </div>
 
     <script src="{% static "js/main.js" %}"></script>

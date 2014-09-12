@@ -74,28 +74,47 @@ tbody tr:nth-child(even) {
     background-color: #e5e5e5;
 }
 
-.left_column {
-    float: left;
-    padding: 20px;
-    width: 150px;
+label {
+    margin: 5px;
+    width: 200px;
+    display: inline-block;
+    text-align: right;
 }
 
-.left_column ul {
+fieldset {
+    max-width: 450px;
+}
+
+#left_column {
+    float: left;
+    width: 10%;
+}
+
+#right_column {
+    width: 90%;
+    float:left;
+}
+
+ul {
     list-style: none;
-    margin: 0;
+    margin: 20px;
     padding: 0;
 }
 
-.left_column ul li {
+ul li {
     margin-right: 10px;
     height: 30px;
     line-height: normal;
 }
 
-.left_column ul li.selected {
+#left_column ul li.selected {
     font-weight: bold;
 }
 
 #model_table {
     margin: 20px;
+}
+
+#return {
+    float: right;
 }
