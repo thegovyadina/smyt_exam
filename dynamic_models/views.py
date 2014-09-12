@@ -3,6 +3,12 @@ from django.views.generic.base import TemplateView, View
 from mixins import JsonResponseMixin
 
 
+def get_model_data(model):
+    values = [m for m in model.objects.all().values_list()]
+    fields = [(f._verbose_name, f.get_internal_type().lower()) for f in model._meta.fields]
+    return fields, values
+
+
 class HomePageView(TemplateView):
 
     template_name = "index.html"
@@ -17,15 +23,14 @@ class HomePageView(TemplateView):
         context['models'] = models
 
         first_model = get_model('dynamic_models', models[0][0])
-        first_model_values = [m for m in first_model.objects.all().values_list()]
-        first_model_fields = [(f._verbose_name, f.get_internal_type().lower()) for f in first_model._meta.fields]
+        first_model_fields, first_model_values = get_model_data(first_model)
         context['first_model'] = first_model_values
         context['first_model_fields'] = first_model_fields
 
         return context
 
 
-class GetModelView(View, JsonResponseMixin):
+class ModelView(View, JsonResponseMixin):
 
     def get(self, request):
         context = {}
@@ -33,8 +38,7 @@ class GetModelView(View, JsonResponseMixin):
         if model is not None:
             model = get_model('dynamic_models', model)
 
-            model_values = [m for m in model.objects.all().values_list()]
-            model_fields = [(f._verbose_name, f.get_internal_type().lower()) for f in model._meta.fields]
+            model_fields, model_values = get_model_data(model)
 
             context = {
                 'fields': model_fields,

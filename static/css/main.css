@@ -77,6 +77,7 @@ tbody tr:nth-child(even) {
 .left_column {
     float: left;
     padding: 20px;
+    width: 150px;
 }
 
 .left_column ul {
@@ -93,4 +94,8 @@ tbody tr:nth-child(even) {
 
 .left_column ul li.selected {
     font-weight: bold;
+}
+
+#model_table {
+    margin: 20px;
 }
