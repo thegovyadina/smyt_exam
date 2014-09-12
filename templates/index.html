@@ -13,7 +13,7 @@
     <div class="left_column">
         <ul class="models">
             {% for model in models %}
-                <li id="{{ model|first }}" {% if forloop.first %}class="selected" {% endif %}><a href="#" class="local">{{ model|last }}</a></li>
+                <li {% if forloop.first %}class="selected" {% endif %}><a href="#" id="{{ model|first }}" class="local">{{ model|last }}</a></li>
             {% endfor %}
         </ul>
     </div>

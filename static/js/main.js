@@ -1,7 +1,11 @@
-/*global jQuery: false, document: false, alert: false*/
+/*global jQuery: false, document: false, alert: false, console: false */
 (function ($) {
     "use strict";
 
-    alert(1);
+    $("a").click(function () {
+        $.getJSON('/get_model/', {model: this.id}, function (response) {
+            console.log(response);
+        });
+    });
 
 }(jQuery));
