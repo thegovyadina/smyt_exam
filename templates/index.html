@@ -6,6 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>Демонстрация приложения с динамическими моделями</title>
     <link href="{% static "css/main.css" %}" rel="stylesheet" />
+    <link href="{% static "css/vendor/jquery-ui.min.css" %}" rel="stylesheet" />
+    <link href="{% static "css/main.css" %}" rel="stylesheet" />
+    <link href="{% static "css/main.css" %}" rel="stylesheet" />
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="{% static "js/vendor/jquery-2.1.1.min.js" %}"></'+'script>');</script>
 </head>
@@ -18,28 +21,6 @@
         </ul>
     </div>
     <div id="right_column">
-        {% comment %}
-        <table id="model_table">
-            <thead>
-                <tr>
-                    {% for field in first_model_fields %}
-                        <th class="{{ field|last }}">{{ field|first }}</th>
-                    {% endfor %}
-                </tr>
-            </thead>
-            <tbody>
-                {% for item in first_model %}
-                    <tr>
-                        {% for field in item %}
-                            <td>
-                                <span>{{ field }}</span>
-                            </td>
-                        {% endfor %}
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-        {% endcomment %}
         <fieldset>
             <legend>Новая запись</legend>
             <ul id="new_record">
@@ -48,6 +29,7 @@
         </fieldset>
     </div>
 
+    {% csrf_token %}
     <script src="{% static "js/main.js" %}"></script>
 
 </body>

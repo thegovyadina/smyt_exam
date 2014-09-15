@@ -10,9 +10,6 @@ def default(obj):
 class JsonResponseMixin(object):
 
     @staticmethod
-    def render_to_reponse(context):
-        try:
-            result = json.dumps(context, default=default)
-        except (AttributeError, TypeError):
-            result = json.dumps({'error': 1, 'error_msg': 'JSON serialization error'})
+    def render_to_reponse(context, error=False):
+        result = json.dumps(context, default=default)
         return HttpResponse(result, content_type='application/json')

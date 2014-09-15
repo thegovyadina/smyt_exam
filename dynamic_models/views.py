@@ -1,10 +1,12 @@
+# -*- coding: utf-8 -*-
+from datetime import datetime
 from django.db.models.loading import get_app, get_models, get_model
 from django.views.generic.base import TemplateView, View
 from mixins import JsonResponseMixin
 
 
 def get_model_data(model):
-    values = [m for m in model.objects.all().values_list()]
+    values = [m for m in model.objects.all().order_by('id').values_list()]
     fields = [(f._verbose_name, f.name, f.get_internal_type().lower()) for f in model._meta.fields]
     return fields, values
 
@@ -21,13 +23,6 @@ class HomePageView(TemplateView):
             models.append([model.__name__, model._meta.verbose_name])
 
         context['models'] = models
-
-        """
-        first_model = get_model('dynamic_models', models[0][0])
-        first_model_fields, first_model_values = get_model_data(first_model)
-        context['first_model'] = first_model_values
-        context['first_model_fields'] = first_model_fields
-        """
 
         return context
 
@@ -46,4 +41,25 @@ class ModelView(View, JsonResponseMixin):
                 'fields': model_fields,
                 'values': model_values,
             }
+        return JsonResponseMixin.render_to_reponse(context)
+
+    def post(self, request):
+        context = {}
+        id = request.POST.get('id')
+
+        if id is not None:
+            model = get_model('dynamic_models', request.POST.get('model')).objects.get(id=int(id))
+        else:
+            model = get_model('dynamic_models', request.POST.get('model'))()
+
+        for field in model._meta.fields:
+            if field.name not in request.POST:
+                continue
+            value = request.POST[field.name]
+            if field.get_internal_type() == 'DateField':
+                value = datetime.strptime(value, '%d.%m.%Y')
+
+            setattr(model, field.name, value)
+        model.save()
+
         return JsonResponseMixin.render_to_reponse(context)

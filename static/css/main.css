@@ -122,3 +122,9 @@ ul li {
 .invalid {
     border: 1px solid red;
 }
+
+td.charfield,
+td.integerfield,
+td.datefield {
+    cursor: pointer;
+}

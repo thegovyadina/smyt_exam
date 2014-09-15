@@ -18,10 +18,6 @@ for config_model in get_models_configs():
         '__module__': __name__,
     }
 
-    # Если у модели есть поле "name", используем его для наименования записей в админке
-    if 'name' in config_model['fields']:
-        attrs.update({'__unicode__': lambda self: self.name})
-
     model = type(
         str(config_model['name']),
         (models.Model,),
