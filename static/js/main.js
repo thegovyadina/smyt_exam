@@ -1,4 +1,4 @@
-/*global jQuery: false, document: false, alert: false, console: false */
+/*global jQuery: false, document: false, alert: false, console: false, setTimeout: false */
 (function ($) {
     "use strict";
 
@@ -177,7 +177,23 @@
     });
 
     $('body').on('focus', '#input-date_joined, .datefield input', function () {
-        $(this).datepicker({dateFormat: "dd.mm.yy"});
+        var that = $(this);
+        $(this).datepicker({
+            dateFormat: "dd.mm.yy",
+            onClose: function () {
+                var val = that.val(), model_data = {},
+                    model_field = $(this).parent().data('field'),
+                    field_type = $(this).parent().data('type'),
+                    recordid = $(this).parent().data('recordid');
+                if (!valid_field(val, field_type)) {
+                    $(this).addClass('invalid');
+                    return false;
+                }
+                model_data.id = recordid;
+                model_data[model_field] = val;
+                save_model(model_data);
+            }
+        });
     });
 
 }(jQuery));
