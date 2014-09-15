@@ -22,7 +22,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'dynamic_models',
-    #'south'
+    'south'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -30,7 +30,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
+    #'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
@@ -46,7 +46,7 @@ WSGI_APPLICATION = 'smyt_exam.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'smyt',
+        'NAME': 'smyt2',
         'USER': 'x47',
         'PASSWORD': '474747',
         'HOST': '127.0.0.1',
@@ -80,5 +80,5 @@ STATIC_URL = '/static/'
 TEMPLATE_DIRS = (os.path.join(BASE_DIR, 'templates'),)
 
 FIXTURE_DIRS = (
-   (os.path.join(BASE_DIR, 'dynamic_models/fixtures'),)
+   (os.path.join(BASE_DIR, 'dynamic_models/model_configs/fixtures'),)
 )

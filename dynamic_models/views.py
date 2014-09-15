@@ -7,7 +7,7 @@ from mixins import JsonResponseMixin
 
 def get_model_data(model):
     values = [m for m in model.objects.all().order_by('id').values_list()]
-    fields = [(f._verbose_name, f.name, f.get_internal_type().lower()) for f in model._meta.fields]
+    fields = [(getattr(f, "verbose_name"), f.name, f.get_internal_type().lower()) for f in model._meta.fields]
     return fields, values
 
 

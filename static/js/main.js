@@ -176,18 +176,22 @@
         save_model(data);
     });
 
+    // Цепляем дейтпикер
     $('body').on('focus', '#input-date_joined, .datefield input', function () {
         var that = $(this);
         $(this).datepicker({
             dateFormat: "dd.mm.yy",
             onClose: function () {
+                if (that.attr('id') === 'input-date_joined') {
+                    return;
+                }
                 var val = that.val(), model_data = {},
                     model_field = $(this).parent().data('field'),
                     field_type = $(this).parent().data('type'),
                     recordid = $(this).parent().data('recordid');
                 if (!valid_field(val, field_type)) {
                     $(this).addClass('invalid');
-                    return false;
+                    return;
                 }
                 model_data.id = recordid;
                 model_data[model_field] = val;
