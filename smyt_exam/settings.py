@@ -22,7 +22,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'dynamic_models',
-    'south'
+    #'south'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -78,3 +78,7 @@ STATICFILES_DIRS = (
 STATIC_URL = '/static/'
 
 TEMPLATE_DIRS = (os.path.join(BASE_DIR, 'templates'),)
+
+FIXTURE_DIRS = (
+   (os.path.join(BASE_DIR, 'dynamic_models/fixtures'),)
+)
