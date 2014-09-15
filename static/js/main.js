@@ -11,11 +11,15 @@
     */
     function valid_field(value, type) {
         var  dateReg = /^\d{2}\.\d{2}\.\d{4}$/;
+        if ((type === 'charfield') && (value === '')) {
+            alert('Поле обязательно для заполнения.');
+            return false;
+        }
         if ((type === 'integerfield') && (parseInt(value, 10)).toString() !== value) {
             alert('Значение должно быть целым числом.');
             return false;
         }
-        if ((type === 'datefield') && !(value.match(dateReg))) {
+        if ((type === 'datefield') && (!value.match(dateReg))) {
             alert('Значение должно быть датой в формате dd.mm.YYYY.');
             return false;
         }
@@ -170,6 +174,10 @@
         }
 
         save_model(data);
+    });
+
+    $('body').on('focus', '#input-date_joined, .datefield input', function () {
+        $(this).datepicker({dateFormat: "dd.mm.yy"});
     });
 
 }(jQuery));

@@ -45,8 +45,11 @@ textarea {
 
 a {
     text-decoration: none;
-    border-bottom: 1px solid #3366ff;
     color: #3366ff;
+}
+
+a.a {
+    border-bottom: 1px solid #3366ff;
 }
 
 a.local{
