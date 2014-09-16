@@ -46,7 +46,7 @@ WSGI_APPLICATION = 'smyt_exam.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'smyt2',
+        'NAME': 'smyt',
         'USER': 'x47',
         'PASSWORD': '474747',
         'HOST': '127.0.0.1',
@@ -79,6 +79,4 @@ STATIC_URL = '/static/'
 
 TEMPLATE_DIRS = (os.path.join(BASE_DIR, 'templates'),)
 
-FIXTURE_DIRS = (
-   (os.path.join(BASE_DIR, 'dynamic_models/model_configs/fixtures'),)
-)
+#STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
