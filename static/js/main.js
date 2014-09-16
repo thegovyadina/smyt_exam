@@ -6,8 +6,8 @@
 
     /* Валидация полей ввода
 
-    @param [String] model_id - введенное значение
-    @param [String] model_id - тип данных
+    @param [String] value - введенное значение
+    @param [String] type - тип данных
     */
     function valid_field(value, type) {
         var  dateReg = /^\d{2}\.\d{2}\.\d{4}$/;
