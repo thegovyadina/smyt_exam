@@ -27,7 +27,7 @@ class HomePageView(TemplateView):
         return context
 
 
-class ModelView(View, JsonResponseMixin):
+class ModelView(View):
 
     def get(self, request):
         context = {}
