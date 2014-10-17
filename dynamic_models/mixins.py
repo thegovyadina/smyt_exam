@@ -7,6 +7,7 @@ def default(obj):
     if isinstance(obj, datetime.date):
         return obj.strftime("%d.%m.%Y")
 
+
 class JsonResponseMixin(object):
 
     @staticmethod

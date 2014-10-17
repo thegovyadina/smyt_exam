@@ -79,6 +79,7 @@
                 value = $(this).text();
                 $(this).empty();
                 input_field = $('<input type="text">');
+                input_field.addClass('model');
                 input_field.val(value);
 
                 // Вешаем на поле обработку нажатия Enter
@@ -177,12 +178,12 @@
     });
 
     // Цепляем дейтпикер
-    $('body').on('focus', '#input-date_joined, .datefield input', function () {
+    $('body').on('focus', 'input[data-type="datefield"], .datefield input', function () {
         var that = $(this);
         $(this).datepicker({
             dateFormat: "dd.mm.yy",
             onClose: function () {
-                if (that.attr('id') === 'input-date_joined') {
+                if (!(that.hasClass('model'))) {
                     return;
                 }
                 var val = that.val(), model_data = {},
@@ -199,5 +200,4 @@
             }
         });
     });
-
 }(jQuery));

@@ -1,12 +1,19 @@
 # -*- coding: utf-8 -*-
 from datetime import datetime
 from django.db.models.loading import get_app, get_models, get_model
+from django.utils.html import escape
 from django.views.generic.base import TemplateView, View
 from mixins import JsonResponseMixin
 
 
+def escapejs(obj):
+    if isinstance(obj, basestring):
+        obj = escape(obj)
+    return obj
+
+
 def get_model_data(model):
-    values = [m for m in model.objects.all().order_by('id').values_list()]
+    values = [map(lambda x: escapejs(x), m) for m in model.objects.all().order_by('id').values_list()]
     fields = [(getattr(f, "verbose_name"), f.name, f.get_internal_type().lower()) for f in model._meta.fields]
     return fields, values
 
